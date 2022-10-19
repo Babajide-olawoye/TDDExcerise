@@ -37,6 +37,11 @@ public class Exc {
 		int index = notes.size() - 1;   
 		notes.remove(index);
 	}
+	
+	public int searchNote(String note) {
+		
+		return notes.indexOf(note);
+	}
 
 	public static void main(String[] args) {
 		
@@ -45,8 +50,10 @@ public class Exc {
 		Scanner myObj2 = new Scanner(System.in);
 		Scanner myObj3 = new Scanner(System.in);
 		Scanner myObj4 = new Scanner(System.in);
+		Scanner myObj5 = new Scanner(System.in);
 		int exit = 0;
 		int index = 0;
+		int indexOfNote = 0;
 		String note = " ";
 		String newNote;
 		
@@ -55,19 +62,19 @@ public class Exc {
 		while (exit != 2) {
 			System.out.println("1 to store note, 2 to exit, 3 to view notes, 4 to clear the list, 5 to clear the last note or 6 to update an entry");
 			exit = myObj.nextInt();
-
+			
 			if(exit == 1) {
 				System.out.println("Type the note you would like to save: ");
 				note = myObj2.nextLine();
 				exc.saveNotes(note);
 			}
-			if(exit == 3) {
+			else if(exit == 3) {
 				exc.viewNotes();
 			}
-			if(exit == 4) {
+			else if(exit == 4) {
 				exc.deleteNotes();
 			}
-			if(exit == 5) {
+			else if(exit == 5) {
 				exc.deleteLastNote();
 			}
 			else if(exit == 6){
@@ -79,6 +86,16 @@ public class Exc {
 				exc.updateNotes(index, newNote);
 				
 			}
+			else if(exit==7) {
+				System.out.println("Please enter the title of the note you are looking for");
+				note = myObj5.nextLine();
+				
+				indexOfNote = exc.searchNote(note);
+				
+				System.out.println("The note you are looking for is located at index: " +indexOfNote);
+			}
+			
+			
 		}
 
 	}

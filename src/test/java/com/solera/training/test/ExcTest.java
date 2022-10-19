@@ -68,5 +68,40 @@ class ExcTest {
 		assertEquals(exc.getNotes().isEmpty(), true);
 		
 	}
+	
+	@Test
+	void testUpdate() {
+		Exc exc = new Exc();
+		String updateVersin = "Updated Note 2";
+		
+		exc.saveNotes("Note 1");
+		exc.saveNotes("Note 2");
+		exc.saveNotes("Note 3");
+		
+		exc.updateNotes(1, "Updated Note 2");
+		
+		assertEquals(exc.getNotes().get(1), updateVersin);
+		
+	}
+	
+	@Test
+	void testSearchNote() {
+		Exc exc = new Exc();
+		String note = "Note 4";
+		int indexOfNote = 0;
+		
+		exc.saveNotes("Note 1");
+		exc.saveNotes("Note 2");
+		exc.saveNotes("Note 3");
+		exc.saveNotes("Note 4");
+		exc.saveNotes("Note 5");
+		exc.saveNotes("Note 6");
+		
+		indexOfNote = exc.searchNote(note);
+		
+		assertEquals(indexOfNote, 3);
+		
+	}
+	
 
 }
